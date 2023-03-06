@@ -1,0 +1,5 @@
+import re
+txt = input()
+str = '^a[0(b*?)$]'
+b = re.search(str,txt)
+print (b)
