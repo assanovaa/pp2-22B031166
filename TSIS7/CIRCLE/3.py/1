@@ -1,0 +1,41 @@
+import pygame
+import sys
+ 
+FPS = 60
+WIDTH = 700  
+HEIGHT = 300  
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+ 
+sc = pygame.display.set_mode((WIDTH, HEIGHT))
+clock = pygame.time.Clock()
+
+r = 25
+x = (WIDTH-r)//2
+y = (HEIGHT-r)//2
+
+ 
+while 1:
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            sys.exit()
+        elif i.type == pygame.KEYDOWN:
+            if i.key ==pygame.K_UP:
+                y-=20
+            elif i.type == pygame.K_DOWN:
+                y+=20
+            elif i.type == pygame.K_RIGHT:
+                x+=20
+            elif i.type == pygame.K_LEFT:
+                x-=20
+
+
+    x = max(x, r)
+    y = max(y, r)
+    x = min(x,WIDTH-r)
+    y = min(y, HEIGHT-r)
+
+    sc.fill(WHITE)
+    pygame.draw.circle(sc, RED, (x, y), r)
+    pygame.display.update()
+    clock.tick(FPS)
